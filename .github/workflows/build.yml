@@ -27,7 +27,7 @@ jobs:
 
       - name: Run CoreELEC Builder
         run: |
-          PROJECT=Amlogic-ng ARCH=aarch64 make image
+          PROJECT=Amlogic ARCH=aarch64 make image
 
       - name: Upload Image Artifact
         uses: actions/upload-artifact@v4
