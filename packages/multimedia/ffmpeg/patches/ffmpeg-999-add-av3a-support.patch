@@ -1,0 +1,63 @@
+diff -pyruN a/libavformat/Makefile b/libavformat/Makefile
+--- a/libavformat/Makefile
++++ b/libavformat/Makefile
+@@ -102,6 +102,8 @@ OBJS-$(CONFIG_ASF_MUXER)         += asfe
+ OBJS-$(CONFIG_ASS_DEMUXER)       += assdec.o
+ OBJS-$(CONFIG_ASS_MUXER)         += assenc.o
+ OBJS-$(CONFIG_AST_DEMUXER)       += astdec.o
++OBJS-$(CONFIG_AV3A_DEMUXER)      += av3adec.o
++OBJS-$(CONFIG_AV3A_MUXER)        += av3aenc.o
+ OBJS-$(CONFIG_AST_MUXER)         += astenc.o
+ OBJS-$(CONFIG_AU_DEMUXER)        += au.o
+ OBJS-$(CONFIG_AU_MUXER)          += au.o
+diff -pyruN a/libavformat/allformats.c b/libavformat/allformats.c
+--- a/libavformat/allformats.c
++++ b/libavformat/allformats.c
+@@ -75,6 +75,8 @@ extern const AVInputFormat  ff_asf_demux
+ extern const AVOutputFormat ff_asf_stream_muxer;
+ extern const AVInputFormat  ff_ass_demuxer;
+ extern const AVOutputFormat ff_ass_muxer;
++extern const AVInputFormat  ff_av3a_demuxer;
++extern const AVOutputFormat ff_av3a_muxer;
+ extern const AVInputFormat  ff_ast_demuxer;
+ extern const AVOutputFormat ff_ast_muxer;
+ extern const AVInputFormat  ff_au_demuxer;
+diff -pyruN a/libavcodec/allcodecs.c b/libavcodec/allcodecs.c
+--- a/libavcodec/allcodecs.c
++++ b/libavcodec/allcodecs.c
+@@ -402,6 +402,7 @@ extern const FFCodec ff_atrac9_decoder;
+ extern const FFCodec ff_avc_decoder;
+ extern const FFCodec ff_avc_encoder;
+ extern const FFCodec ff_avs_decoder;
++extern const FFCodec ff_av3a_decoder;
+ extern const FFCodec ff_binaural_decoder;
+ extern const FFCodec ff_bmv_audio_decoder;
+ extern const FFCodec ff_celt_decoder;
+diff -pyruN a/libavcodec/codec_desc.c b/libavcodec/codec_desc.c
+--- a/libavcodec/codec_desc.c
++++ b/libavcodec/codec_desc.c
+@@ -3365,6 +3365,13 @@ static const AVCodecDescriptor codec_des
+         .long_name = NULL_IF_CONFIG_SMALL("MPEG-4 Audio Lossless Coding (ALS)"),
+         .props     = AV_CODEC_PROP_LOSSLESS,
+     },
++    {
++        .id        = AV_CODEC_ID_AV3A,
++        .type      = AVMEDIA_TYPE_AUDIO,
++        .name      = "av3a",
++        .long_name = NULL_IF_CONFIG_SMALL("AVS3-P3 / Audio Vivid 三维声"),
++        .props     = AV_CODEC_PROP_LOSSY,
++    },
+     {
+         .id        = AV_CODEC_ID_BINAURAL,
+         .type      = AVMEDIA_TYPE_AUDIO,
+diff -pyruN a/libavcodec/codec_id.h b/libavcodec/codec_id.h
+--- a/libavcodec/codec_id.h
++++ b/libavcodec/codec_id.h
+@@ -536,6 +536,7 @@ enum AVCodecID {
+     AV_CODEC_ID_MISC4,
+     AV_CODEC_ID_APAC,
+     AV_CODEC_ID_FTR,
++    AV_CODEC_ID_AV3A,
+
+     /* subtitle codecs */
+     AV_CODEC_ID_FIRST_SUBTITLE = 0x17000,
