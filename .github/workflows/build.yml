@@ -40,7 +40,7 @@ jobs:
           # 这里提供两个几乎不会拦截的备用高可用链接：
           wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
                -O sources/zlib/zlib-1.3.1.tar.gz \
-               https://mirrors.kernel.org/sourceware/zlib/zlib-1.3.1.tar.gz          
+               https://zlib.net/fossils/zlib-1.3.1.tar.gz          
         
       - name: Run CoreELEC Builder
         run: |
