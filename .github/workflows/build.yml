@@ -26,7 +26,6 @@ jobs:
 
       - name: Run CoreELEC Builder
         run: |
-          # 核心命令：只编译 S922X（922芯片）需要的 Amlogic-ng 镜像
           PROJECT=Amlogic-ng ARCH=aarch64 make image
 
       - name: Upload Image Artifact
