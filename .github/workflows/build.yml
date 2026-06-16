@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          ref: coreelec-21 # 确保拉取的是21版本分支
+          ref: coreelec-21-cpm # 确保拉取的是21版本分支
 
       - name: Free Disk Space
         run: |
