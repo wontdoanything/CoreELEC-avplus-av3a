@@ -232,8 +232,8 @@ configure_target() {
               --disable-altivec \
               ${PKG_FFMPEG_FPU} \
               --disable-symver \
-              --enable-decoder=av3a \
-              --enable-demuxer=av3a \
+              # --enable-decoder=av3a \
+              # --enable-demuxer=av3a \
               ${PKG_FFMPEG_TESTING}
 }
 
