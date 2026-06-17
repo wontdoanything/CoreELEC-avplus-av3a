@@ -30,7 +30,10 @@ jobs:
           # 创建下载目录（请根据你的构建系统实际目录调整，这里以 dl 为例）
           mkdir -p dl
           # 从稳定的官方 GNU 镜像下载
-          wget -P dl/ https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
+          wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
+               -O dl/gmp-6.3.0.tar.xz \
+              https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz
+
       - name: Pre-download Zlib Archive
         run: |
           # 创建 CoreELEC 默认的源文件存放目录
