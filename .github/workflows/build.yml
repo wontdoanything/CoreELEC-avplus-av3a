@@ -52,8 +52,8 @@ jobs:
 
           # 2. 从官方快照下载正确的文件，并存放到指定目录
           wget --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
-               -O sources/wireguard-linux-compat/wireguard-linux-compat-1.0.20220627.tar.xz \
-              https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20220627.tar.xz
+               -O sources/wireguard-linux-compat/wireguard-linux-compat-1.0.20210914.tar.xz \
+              https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20210914.tar.xz
 
       - name: Run CoreELEC Builder
         run: |
