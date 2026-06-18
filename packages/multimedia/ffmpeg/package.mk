@@ -134,6 +134,10 @@ else
   PKG_FFMPEG_TESTING="--disable-programs"
 fi
 
+# 如果以后需要支持 av3a，可以把下面两行加回 ./configure 中：
+# --enable-decoder=av3a
+# --enable-demuxer=av3a
+
 configure_target() {
   ./configure --prefix="/usr" \
               --cpu="${TARGET_CPU}" \
@@ -232,8 +236,6 @@ configure_target() {
               --disable-altivec \
               ${PKG_FFMPEG_FPU} \
               --disable-symver \
-              # --enable-decoder=av3a \
-              # --enable-demuxer=av3a \
               ${PKG_FFMPEG_TESTING}
 }
 
