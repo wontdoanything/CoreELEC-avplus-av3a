@@ -13,6 +13,17 @@ jobs:
         with:
           ref: coreelec-21-cpm # 确保拉取的是21版本分支
 
+      - name: Cache Speed Up
+        uses: actions/cache@v4
+        with:
+          path: |
+            sources/
+            build.CoreELEC-Amlogic-ng.arm-21/.threads/
+            build.CoreELEC-Amlogic-ng.arm-21/.stamps/
+          key: ${{ runner.os }}-coreelec-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-coreelec-
+
       - name: Free Disk Space
         run: |
           sudo rm -rf /usr/share/dotnet
